@@ -1,0 +1,66 @@
+﻿<Window x:Class="Beanify_Playlist.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beanify_Playlist"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView Name="LvPlaylist" SelectionMode="Single" Margin="85,46,85,303" SelectionChanged="LvPlaylist_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Cover" Width="250" DisplayMemberBinding="{Binding Cover}" />
+                    <GridViewColumn Header="Playlist Title" Width="200" DisplayMemberBinding="{Binding Title}" />
+                    <GridViewColumn Header="Song Count" Width="80" DisplayMemberBinding="{Binding Songcount}" />
+                    <GridViewColumn Header="Total Plays" Width="80" DisplayMemberBinding="{Binding Totalplays}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Add Playlist" HorizontalAlignment="Left" Margin="551,10,0,0" VerticalAlignment="Top" Click="AddPlaylist_Click"/>
+        <Button Content="Delete Playlist" HorizontalAlignment="Left" Margin="637,10,0,0" VerticalAlignment="Top" Click="DeletePlaylist_Click"/>
+        <ListView x:Name="LvSonglist" SelectionMode="Single" Margin="85,198,85,122" SelectionChanged="LvSonglist_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Song Name" Width="200" DisplayMemberBinding="{Binding Songname}" />
+                    <GridViewColumn Header="Artist" Width="100" DisplayMemberBinding="{Binding Artist}" />
+                    <GridViewColumn Header="Album" Width="80" DisplayMemberBinding="{Binding Album}" />
+                    <GridViewColumn Header="Length" Width="80" DisplayMemberBinding="{Binding Length}" />
+                    <GridViewColumn Header="Plays" Width="80" DisplayMemberBinding="{Binding Plays}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Add Song" HorizontalAlignment="Left" Margin="560,163,0,0" VerticalAlignment="Top" Click="AddSong_Click"/>
+        <Button Content="Delete Song" HorizontalAlignment="Left" Margin="646,163,0,0" VerticalAlignment="Top" Click="DeleteSong_Click"/>
+        <ToolBar HorizontalAlignment="Left" Height="97"  Width="468" Margin="176,327,0,10">
+
+            <Button Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Play_Click"/>
+            <Button Content="Pause" VerticalAlignment="Top"  Click="Pause_Click"/>
+            <Button Content="Skip" VerticalAlignment="Top"  Click="Skip_Click"/>
+
+
+
+        </ToolBar>
+        <StatusBar Margin="185,353,166,29">
+            <StatusBarItem Grid.Column="0" HorizontalContentAlignment="Stretch">
+                <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
+                <Slider Name="sliProgress"   Width="232" ValueChanged="sliProgress_ValueChanged_1" />
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem Grid.Column="2"  HorizontalContentAlignment="Stretch" Width="17">
+                <ProgressBar Name="pbVolume" Height="7" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" Margin="-57,0,-52,0" />
+            </StatusBarItem>
+
+        </StatusBar>
+
+
+        <Button Content="Options" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click" Margin="273,163,0,0"/>
+        <Label Content="Selected Playlist" HorizontalAlignment="Left" Margin="85,160,0,0" VerticalAlignment="Top"/>
+        <Label Content="Your Playlists" HorizontalAlignment="Left" Margin="85,10,0,0" VerticalAlignment="Top"/>
+        <Label Name="PlaylistName" Content="{Binding Title}" HorizontalAlignment="Left" Margin="197,163,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
