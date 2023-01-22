@@ -61,6 +61,7 @@
         <Label Content="Selected Playlist" HorizontalAlignment="Left" Margin="85,160,0,0" VerticalAlignment="Top"/>
         <Label Content="Your Playlists" HorizontalAlignment="Left" Margin="85,10,0,0" VerticalAlignment="Top"/>
         <Label Name="PlaylistName" Content="{Binding Title}" HorizontalAlignment="Left" Margin="197,163,0,0" VerticalAlignment="Top"/>
-
+        <MediaElement Source="C:\Users\Administrator\Documents\AppDev1\Beanify\Beanify_Playlist\Beanify_Playlist\Media\Bear.wmv"  Name="myMediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" 
+     MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" HorizontalAlignment="Left" Height="116" Margin="637,312,0,0" VerticalAlignment="Top" Width="173"/>
     </Grid>
 </Window>

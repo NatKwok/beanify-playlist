@@ -87,10 +87,12 @@ namespace Beanify_Playlist
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-
+            //MessageBox.Show("Play Test Success");
+            myMediaElement.Play();
         }
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
+            myMediaElement.Pause();
 
         }
         private void Skip_Click(object sender, RoutedEventArgs e)
@@ -110,7 +112,21 @@ namespace Beanify_Playlist
 
         private void sliProgress_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            int SliderValue = (int)sliProgress.Value;
 
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue);
+            myMediaElement.Position = ts;
+        }
+
+        private void Element_MediaOpened(object sender, EventArgs e)
+        {
+            sliProgress.Maximum = myMediaElement.NaturalDuration.TimeSpan.TotalMilliseconds;
+        }
+
+        // When the media playback is finished. Stop() the media to seek to media start.
+        private void Element_MediaEnded(object sender, EventArgs e)
+        {
+            myMediaElement.Stop();
         }
     }
 }
