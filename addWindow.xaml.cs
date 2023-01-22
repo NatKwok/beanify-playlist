@@ -37,6 +37,11 @@ namespace Beanify_Playlist
                 db.SaveChanges();
                 MessageBox.Show("Playlist Added");
                 this.Close();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).LvPlaylist.ItemsSource = db.MyPlaylists.ToList();
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).LvPlaylist.Items.Refresh();
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).LvPlaylist.SelectedIndex = -1;
             }
             catch (ArgumentException ex)
             {
